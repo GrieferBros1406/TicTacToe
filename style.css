@@ -1,0 +1,287 @@
+  :root {
+    --spieler-farbe: green;
+    --gegner-farbe: red;
+  }
+  
+  * {
+    font-family: "Arial", "Helvetica", sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 10vh, 4rem);
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .spielanzeige,
+  .overlay-text {
+    font-size: clamp(5rem, 10vh, 4rem);
+    font-weight: 900;
+    text-align: center;
+    color: blue;
+  }
+
+  .spielanzeige {
+    font-size: 7.5rem;
+  }
+  
+  .spielfeld {
+    width: 1000px;
+    aspect-ratio: 1 / 1;
+    max-width: 90%;
+    max-height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .feld {
+    background-color: transparent;
+    border: 0.3rem solid blue;
+    box-shadow: 0 0 20px cyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .feld::before,
+  .feld::after {
+    content: "";
+    box-sizing: border-box;
+  }
+  
+  .feld.spieler::before,
+  .spielanzeige.spieler ~ .spielfeld .feld:not([disabled]):hover::before {
+    border: 1rem solid var(--spieler-farbe);
+    box-shadow: 0 0 15px greenyellow;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .feld.gegner::before,
+  .feld.gegner::after,
+  .spielanzeige.gegner ~ .spielfeld .feld:not([disabled]):hover::before {
+    background-color: var(--gegner-farbe);
+    box-shadow: 0 0 15px rgb(243, 11, 166);
+    width: 1rem;
+    height: 100%;
+  }
+  
+  .feld.gegner::before,
+  .spielanzeige.gegner ~ .spielfeld .feld:not([disabled]):hover::before {
+    transform: translateX(50%) rotate(45deg);
+  }
+  
+  .feld.gegner::after,
+  .spielanzeige.gegner ~ .spielfeld .feld:not([disabled]):hover::after {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  .spielanzeige.spieler {
+    color: var(--spieler-farbe);
+  }
+
+  .spielanzeige.gegner {
+    color: var(--gegner-farbe);
+  }
+
+  .feld:not([disabled]) {
+    cursor: pointer;
+  }
+
+  .spielanzeige.spieler ~ .spielfeld .feld:not([disabled]):hover::before,
+  .spielanzeige.gegner ~ .spielfeld .feld:not([disabled]):hover::before {
+    opacity: 0.5;
+  }
+
+  .overlay {
+    background-color:  black;
+    position: fixed;
+    inset: 0;
+    color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 2vh, 4rem);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .overlay-button {
+    font-size: 5rem;
+    font-weight: 600;
+    background-color: lightgreen;
+    border: none;
+    padding: 0.5rem 1em;
+    border-radius: 1rem/50%;
+    cursor: pointer;
+  }
+
+  .overlay-button:hover {
+    background-color: rgb(66, 153, 66);
+  }
+
+  .overlay.sichtbar {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.5s;
+  }
+
+  .dialogname {
+    background-color: white;
+    font-size: 100px;
+    transition: 1s;
+  }
+
+  .nameone,
+  .nametwo {
+    font-size: 100px;
+  }
+
+  .speichernname,
+  .abbruch {
+    font-size: 100px;
+  }
+
+  .dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 50px;
+    background-color: black;
+    color: blue;
+    font-size: 100px;
+    opacity: 0;
+    pointer-events: none;
+    border: 0.75rem solid blue;
+    box-shadow: 0 0 10rem aqua ;
+  }
+
+  #NameOne,
+  #NameTwo {
+    font-size: 100%;
+    background: white;
+  }
+
+  #NameTwo {
+    margin-top: 1.53rem;
+  }
+
+  #saved,
+  #break {
+    font-size: 100px;
+    cursor: pointer;
+    margin-top: 2rem;
+  }
+
+  #onoff-dialog {
+    width: 77rem;
+    height: 73rem;
+  }
+
+  #body-overlay.sichtbar, .dialog.sichtbar {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .namenSpieler,
+  #saved,
+  #break {
+    padding: 1rem;
+    font-size: 5rem;
+    bottom: 5rem;
+    border-radius: 2.5rem/75%;
+    border-color: blue;
+    background-color: black;
+    color: blue;
+    box-shadow: 0px 0px 25px aqua;
+  }
+
+  .aufgeben-button,
+  .bot-seite {
+    padding: 1rem;
+    font-size: 5rem;
+    bottom: 5rem;
+    border-radius: 2.5rem/75%;
+    border-color: blue;
+    background-color: black;
+    color: blue;
+    box-shadow: 0px 0px 25px aqua;
+  }
+
+  .namenSpieler,
+  .aufgeben-button {
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .titel {
+    color: blue;
+    font-size: 12.5rem;
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-weight: 900;
+  }
+
+  .spielmodus-button {
+    font-size: 5rem;
+  }
+
+  .menu-bar {
+    font-size: 7.5rem;
+    border: 1rem aqua;
+  }
+
+  .menu-bar ul {
+    display: inline-flex;
+    list-style: none;
+    color: aqua;
+  }
+
+  .menu-bar ul li a {
+    text-decoration: none;
+    color: aqua;
+  }
+
+  .menu-bar ul li:hover {
+    box-shadow: 0 0 2rem aqua;
+    border: 5rem;
+    border-radius: 1rem;
+    transition: 0.33s;
+  }
+
+  .schwierigkeit-menu {
+    display: none;
+    background: transparent;
+    color: aqua;
+  }
+
+  .menu-bar ul li:hover .schwierigkeit-menu {
+    display: block;
+    position: absolute;
+    margin-top: 0rem;
+    margin-left: -1rem;
+  }
+
+  .menu-bar ul li:hover .schwierigkeit-menu ul {
+    display: block;
+    justify-content: left;
+  }
+
+  .menu-bar ul li:hover .schwierigkeit-menu ul li {
+    width: 655px;
+    border-bottom: 50px blue;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+  }

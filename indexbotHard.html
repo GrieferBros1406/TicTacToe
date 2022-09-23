@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <div727 class="menu-bar">
+        <ul>
+            <li class="active"><a href="#">Schwierigkeit</a>
+            <div class="schwierigkeit-menu">
+                <ul>
+                    <li><a href="index.html">
+                        <button class="bot-seite">
+                            Gegen kein Bot Spielen
+                        </button>
+                    </a></li>
+                    <li><a href="indexBot.html">
+                        <button class="bot-seite">
+                            Gegen ein leichten Bot Spielen
+                        </button>
+                    </a></li>
+                </ul>
+            </div>
+            </li>
+        </ul>
+    </div727>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Bot</title>
+    <link href="stylebotHard.css" rel="stylesheet">
+    <script src="scriptbotHard.js" defer></script>
+</head>
+<body>
+    <div class="titel">Tik Tak Bot</div>
+    <div class="titel-hard">UNMÖGLICH EDITION</div>
+    <p class="spielanzeige">Platzhalter</p>
+    <div class="spielfeld">
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+        <button class="feld"></button>
+    </div>
+    <div class ="overlay">
+        <p class="overlay-text">
+            Platzhalter
+        </p>
+        <button class="overlay-button">
+            Nochmal Spielen!
+        </button>
+    </div>
+    <div class="dialog" id="onoff-dialog">
+        <a href="#" role="button" class="dialog-schliessen-button">
+           <i class="fas fa-times"></i>
+        </a>
+        <h3>SpielerNamen eingeben!</h3>
+        <form action="">
+            <input type="text" placeholder="Spieler" id="NameOne">
+            <button type="button" id="saved" onclick="myInput('onoff-dialog')" >Speichern</button>
+            <button type="button" id="break" onclick="dialogSchliessen('onoff-dialog')">Abbrechen</button>
+        </form>
+    </div>
+    <button class="aufgeben-button">Aufgeben</button>
+</body>
+</html>
